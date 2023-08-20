@@ -8,7 +8,7 @@ Este é o repositório oficial da API REST do Atacado dos Presentes, destinada a
 Para configurar o ambiente de desenvolvimento e iniciar a API em sua máquina local, siga as etapas abaixo:
 
 1. Clone este repositório: `git clone https://github.com/alexandresjunior/atacado-presentes-api.git`
-2. Navegue até o diretório: `cd atacado-dos-presentes-api`
+2. Navegue até o diretório: `cd atacado-presentes-api`
 3. Instale as dependências: `mvn install`
 4. Configure as variáveis de ambiente, incluindo configurações de conexão com o banco de dados.
 5. Inicie a aplicação: `mvn spring-boot:run`
@@ -18,3 +18,9 @@ Para configurar o ambiente de desenvolvimento e iniciar a API em sua máquina lo
 
 ## Contribuição
 Se você deseja contribuir para o desenvolvimento desta API, crie um Fork deste repositório e abra um Pull Request com a sua contribuição.
+
+<br/>
+<div align="center">
+  <p>Um projeto desenvolvimento no curso Java Experience @ Treina Recife</p>
+  <img src="https://github.com/alexandresjunior/atacado-presentes-api/assets/83607914/98568579-7433-4359-91df-9ec8dc4cd28d" alt="Treina Recife" width="25%"/>
+</div>
