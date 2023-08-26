@@ -1,17 +1,20 @@
 package com.atacado.presentes.api.model;
 
+import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity(name = "tb_produtos")
 public class Produtos {
     @Id
@@ -22,7 +25,7 @@ public class Produtos {
     private String  nome;
 
     @Column(nullable = false)
-    private double preco;
+    private Double preco;
 
     @Column(columnDefinition = "TEXT")
     private String descricao;
