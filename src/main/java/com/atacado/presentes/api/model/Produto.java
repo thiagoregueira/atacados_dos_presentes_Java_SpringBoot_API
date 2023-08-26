@@ -1,10 +1,15 @@
 package com.atacado.presentes.api.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,12 +26,20 @@ public class Produto {
     private Long idProduto;
 
     @Column(nullable = false, length = 255)
-    private String  nome;
+    private String nome;
 
     @Column(nullable = false)
     private Double preco;
 
     @Column(columnDefinition = "TEXT")
     private String descricao;
+
+    @ManyToOne
+    @JoinColumn(name = "idFornecedor")
+    private Fornecedor fornecedor;
+
+    @ManyToMany
+    @JoinColumn(name = "idCategoria")
+    private List<Categoria> categorias;
 
 }
