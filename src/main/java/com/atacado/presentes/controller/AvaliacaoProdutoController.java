@@ -18,7 +18,7 @@ import com.atacado.presentes.model.AvaliacaoProduto;
 import com.atacado.presentes.repository.AvaliacaoProdutoRepository;
 
 @RestController
-@RequestMapping(value = "/avaliacao-produto")
+@RequestMapping(value = "/avaliacoes-produto")
 public class AvaliacaoProdutoController {
 
     @PostMapping
