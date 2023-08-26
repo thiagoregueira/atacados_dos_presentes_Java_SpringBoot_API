@@ -23,24 +23,21 @@ import com.atacado.presentes.api.repository.UsuarioRepository;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioRepository acao;
+    private UsuarioRepository usuarioRepository;
 
-    // cadastrar
     @PostMapping
     public ResponseEntity<?> cadastrarCategoria(@RequestBody Usuario usuario) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(acao.save(usuario));
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
 
-    // listar todos
     @GetMapping
     public ResponseEntity<Page<Usuario>> listarUsuarios(Pageable paginacao) {
-        return ResponseEntity.status(HttpStatus.OK).body(acao.findAll(paginacao));
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.findAll(paginacao));
     }
 
-    // buscar por id
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> listarPeloId(@PathVariable("id") Integer id) {
-        Optional<Usuario> usuario = acao.findById(id);
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
 
         if (usuario.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -49,10 +46,9 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.OK).body(usuario.get());
     }
 
-    // atualizar
     @PutMapping("/{id}")
     public ResponseEntity<?> atualizarUsuario(@PathVariable("id") Integer id, @RequestBody Usuario usuario) {
-        Optional<Usuario> usuarioExistente = acao.findById(id);
+        Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
 
         if (usuarioExistente.isPresent()) {
             usuarioExistente.get().setEmail(usuario.getEmail());
@@ -60,22 +56,21 @@ public class UsuarioController {
             usuarioExistente.get().setPerfil(usuario.getPerfil());
             usuarioExistente.get().setTelefone(usuario.getTelefone());
 
-            return ResponseEntity.status(HttpStatus.OK).body(acao.save(usuarioExistente.get()));
+            return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.save(usuarioExistente.get()));
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    // remover por id
     @DeleteMapping("/{id}")
     public ResponseEntity<?> removerPeloId(@PathVariable Integer id) {
-        Optional<Usuario> usuario = acao.findById(id);
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
 
         if (usuario.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
-        acao.deleteById(id);
+        usuarioRepository.deleteById(id);
 
         return ResponseEntity.status(HttpStatus.OK).body("Usuario deletada com sucesso!");
     }
