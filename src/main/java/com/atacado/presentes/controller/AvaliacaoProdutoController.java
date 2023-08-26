@@ -20,16 +20,14 @@ import com.atacado.presentes.repository.AvaliacaoProdutoRepository;
 public class AvaliacaoProdutoController {
 
     @PostMapping
-    public AvaliacaoProduto cadastrarNovaAvaliacao(@RequestBody AvaliacaoProduto avaliacaoproduto){
+    public AvaliacaoProduto cadastrarNovaAvaliacao(@RequestBody AvaliacaoProduto avaliacaoproduto) {
         return avaliacaoProdutoRepository.save(avaliacaoproduto);
     }
-
 
     @GetMapping("/{idAvaliacao}")
     public Optional<AvaliacaoProduto> buscarAvaliacaoPeloId(@PathVariable("id") Long id) {
         return avaliacaoProdutoRepository.findById(id);
     }
-
 
     @PutMapping("/{id}")
     public AvaliacaoProduto atualizarAvaliacaoProduto(
@@ -42,10 +40,9 @@ public class AvaliacaoProdutoController {
             avaliacaoProdutoExistente.get().setComentario(avaliacaoProduto.getComentario());
             return avaliacaoProdutoRepository.save(avaliacaoProdutoExistente.get());
         }
-        
-        return null; 
-    }
 
+        return null;
+    }
 
     @DeleteMapping("/{id}")
     public String deletarAvaliacaoPeloId(@PathVariable("id") Long id) {
@@ -53,7 +50,6 @@ public class AvaliacaoProdutoController {
 
         return "Avaliação deletada com sucesso!";
     }
-
 
     @Autowired
     private AvaliacaoProdutoRepository avaliacaoProdutoRepository;

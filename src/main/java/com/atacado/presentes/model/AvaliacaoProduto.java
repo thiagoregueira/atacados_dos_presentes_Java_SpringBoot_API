@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity(name = "tb_avaliacoes_produto")
 public class AvaliacaoProduto {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAvaliacaoProduto;
@@ -23,7 +23,6 @@ public class AvaliacaoProduto {
     @Column(nullable = true)
     private Integer pontuacao;
 
-    
     @Column(columnDefinition = "TEXT")
     private String comentario;
 
