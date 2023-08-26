@@ -1,4 +1,4 @@
-package com.atacado.model;
+package com.atacado.presentes.api.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
