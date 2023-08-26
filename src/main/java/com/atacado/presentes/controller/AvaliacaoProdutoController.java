@@ -22,8 +22,8 @@ import com.atacado.presentes.repository.AvaliacaoProdutoRepository;
 public class AvaliacaoProdutoController {
 
     @PostMapping
-    public ResponseEntity<AvaliacaoProduto> cadastrarNovaAvaliacao(@RequestBody AvaliacaoProduto avaliacaoproduto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(avaliacaoProdutoRepository.save(avaliacaoproduto));
+    public ResponseEntity<AvaliacaoProduto> cadastrarNovaAvaliacao(@RequestBody AvaliacaoProduto avaliacaoProduto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(avaliacaoProdutoRepository.save(avaliacaoProduto));
     }
 
     @GetMapping("/{id}")
