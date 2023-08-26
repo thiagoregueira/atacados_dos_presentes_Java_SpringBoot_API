@@ -20,11 +20,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "tb_pedidos")
-public class Pedidos {
+public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPedidos;
+    private Long idPedido;
 
     @Column(nullable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
