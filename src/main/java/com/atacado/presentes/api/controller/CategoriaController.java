@@ -24,16 +24,16 @@ import com.atacado.presentes.api.repository.CategoriaRepository;
 public class CategoriaController {
 
     @Autowired
-    CategoriaRepository repository;
+    CategoriaRepository categoriaRepository;
 
     @GetMapping
     public ResponseEntity<Page<Categoria>> listarCategoria(Pageable paginacao) {
-        return ResponseEntity.status(HttpStatus.OK).body(repository.findAll(paginacao));
+        return ResponseEntity.status(HttpStatus.OK).body(categoriaRepository.findAll(paginacao));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Categoria> listarPeloId(@PathVariable("id") Long id) {
-        Optional<Categoria> categoria = repository.findById(id);
+        Optional<Categoria> categoria = categoriaRepository.findById(id);
 
         if (categoria.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -44,18 +44,18 @@ public class CategoriaController {
 
     @PostMapping
     public ResponseEntity<Categoria> cadastrarCategoria(@RequestBody Categoria categoria) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(categoria));
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(categoria));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Categoria> atualizarCategoria(@PathVariable("id") Long id, @RequestBody Categoria categoria) {
-        Optional<Categoria> categoriaExistente = repository.findById(id);
+        Optional<Categoria> categoriaExistente = categoriaRepository.findById(id);
 
         if (categoriaExistente.isPresent()) {
             categoriaExistente.get().setNome(categoria.getNome());
             categoriaExistente.get().setDescricao(categoria.getDescricao());
 
-            return ResponseEntity.status(HttpStatus.OK).body(repository.save(categoriaExistente.get()));
+            return ResponseEntity.status(HttpStatus.OK).body(categoriaRepository.save(categoriaExistente.get()));
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -63,13 +63,13 @@ public class CategoriaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarCategoriaPeloId(@PathVariable Long id) {
-        Optional<Categoria> categoria = repository.findById(id);
+        Optional<Categoria> categoria = categoriaRepository.findById(id);
 
         if (categoria.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
-        repository.deleteById(id);
+        categoriaRepository.deleteById(id);
 
         return ResponseEntity.status(HttpStatus.OK).body("Categoria deletada com sucesso!");
     }
