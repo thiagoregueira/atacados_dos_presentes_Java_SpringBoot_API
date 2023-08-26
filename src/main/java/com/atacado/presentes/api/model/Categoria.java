@@ -1,30 +1,28 @@
-package com.atacado.presentes.api;
+package com.atacado.presentes.api.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "tb_categorias")
-
-@Getter
-@Setter
-public class Categorias {
+public class Categoria {
 
     @Id
-    private String idCategoria;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idCategoria;
 
     @Column(nullable = false, length = 50)
     private String nome;
 
-    @Column(nullable = false, length = 50)
+    @Column(columnDefinition = "TEXT")
     private String descricao;
 
 }
