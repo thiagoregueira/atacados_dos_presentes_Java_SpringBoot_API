@@ -20,7 +20,7 @@ public class Fornecedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idFornecedores;
+    private Long idFornecedor;
 
     @Column(nullable = false, length = 255)
     private String nomeFantasia;
@@ -31,7 +31,5 @@ public class Fornecedor {
     @Column(nullable = false, length = 18)
     @JsonFormat(pattern = "\\d{2}.\\d{3}.\\d{3}/0001-\\d{2}")
     private String cnpj;
-
-    
 
 }

@@ -23,8 +23,8 @@ import com.atacado.presentes.api.repository.FornecedorRepository;
 public class FornecedorController {
 
     @PostMapping
-    public ResponseEntity<Fornecedor> cadastrarFornecedor(@RequestBody Fornecedor fornecedores) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(fornecedorRepository.save(fornecedores));
+    public ResponseEntity<Fornecedor> cadastrarFornecedor(@RequestBody Fornecedor fornecedor) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(fornecedorRepository.save(fornecedor));
     }
 
     @GetMapping
