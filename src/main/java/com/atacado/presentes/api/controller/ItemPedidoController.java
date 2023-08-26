@@ -16,36 +16,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atacado.presentes.api.model.ItensDoPedido;
-import com.atacado.presentes.api.repository.ItensDoPedidoRepository;
+import com.atacado.presentes.api.model.ItemPedido;
+import com.atacado.presentes.api.repository.ItemPedidoRepository;
 
 @RestController
 @RequestMapping(value = "/itens-pedido")
-public class ItensDoPedidoController {
+public class ItemPedidoController {
 
     @Autowired
-    private ItensDoPedidoRepository itensDoPedidoRepository;
+    private ItemPedidoRepository itensDoPedidoRepository;
 
     @PostMapping
-    public ResponseEntity<ItensDoPedido> cadastrarItemDoPedido(@RequestBody ItensDoPedido itensDoPedido) {
+    public ResponseEntity<ItemPedido> cadastrarItemDoPedido(@RequestBody ItemPedido itensDoPedido) {
         return ResponseEntity.status(HttpStatus.OK).body(itensDoPedidoRepository.save(itensDoPedido));
     }
 
     @GetMapping
-    public ResponseEntity<List<ItensDoPedido>> listarItens() {
+    public ResponseEntity<List<ItemPedido>> listarItens() {
         return ResponseEntity.status(HttpStatus.OK).body(itensDoPedidoRepository.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<ItensDoPedido>> buscarItemPeloId(@PathVariable("id") Long idItem) {
+    public ResponseEntity<Optional<ItemPedido>> buscarItemPeloId(@PathVariable("id") Long idItem) {
         return ResponseEntity.status(HttpStatus.OK).body(itensDoPedidoRepository.findById(idItem));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ItensDoPedido> atualizarItem(
+    public ResponseEntity<ItemPedido> atualizarItem(
             @PathVariable("id") Long idItem,
-            @RequestBody ItensDoPedido itensdoPedido) {
-        Optional<ItensDoPedido> itemExistente = itensDoPedidoRepository.findById(idItem);
+            @RequestBody ItemPedido itensdoPedido) {
+        Optional<ItemPedido> itemExistente = itensDoPedidoRepository.findById(idItem);
 
         if (itemExistente.isPresent()) {
             itemExistente.get().setQuantidade(itensdoPedido.getQuantidade());
@@ -57,7 +57,7 @@ public class ItensDoPedidoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String>  deletarItemPeloId(@PathVariable("id") Long id) {
 
-        Optional<ItensDoPedido> itensDoPedido = itensDoPedidoRepository.findById(id);
+        Optional<ItemPedido> itensDoPedido = itensDoPedidoRepository.findById(id);
         if (itensDoPedido.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
