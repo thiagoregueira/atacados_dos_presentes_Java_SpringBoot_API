@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,44 +20,48 @@ import com.atacado.presentes.api.model.ItensDoPedido;
 import com.atacado.presentes.api.repository.ItensDoPedidoRepository;
 
 @RestController
-@RequestMapping(value = "/itensDoPedido")
+@RequestMapping(value = "/itens-pedido")
 public class ItensDoPedidoController {
 
     @Autowired
     private ItensDoPedidoRepository itensDoPedidoRepository;
 
     @PostMapping
-    public ItensDoPedido cadastrarItemDoPedido(@RequestBody ItensDoPedido itensDoPedido){
-        return itensDoPedidoRepository.save(itensDoPedido);
+    public ResponseEntity<ItensDoPedido> cadastrarItemDoPedido(@RequestBody ItensDoPedido itensDoPedido) {
+        return ResponseEntity.status(HttpStatus.OK).body(itensDoPedidoRepository.save(itensDoPedido));
     }
 
     @GetMapping
-    public List<ItensDoPedido> listarItens(){
-        return itensDoPedidoRepository.findAll();
+    public ResponseEntity<List<ItensDoPedido>> listarItens() {
+        return ResponseEntity.status(HttpStatus.OK).body(itensDoPedidoRepository.findAll());
     }
 
-
-    @GetMapping("/{idItem}")
-    public Optional<ItensDoPedido> buscarItemPeloId(@PathVariable("id")Long idItem){
-        return itensDoPedidoRepository.findById(idItem);
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<ItensDoPedido>> buscarItemPeloId(@PathVariable("id") Long idItem) {
+        return ResponseEntity.status(HttpStatus.OK).body(itensDoPedidoRepository.findById(idItem));
     }
 
     @PutMapping("/{id}")
-    public ItensDoPedido atualizarItem(
-        @PathVariable("id")Long idItem,
-        @RequestBody ItensDoPedido itensdoPedido){
-            Optional<ItensDoPedido> itemExistente = itensDoPedidoRepository.findById(idItem);
+    public ResponseEntity<ItensDoPedido> atualizarItem(
+            @PathVariable("id") Long idItem,
+            @RequestBody ItensDoPedido itensdoPedido) {
+        Optional<ItensDoPedido> itemExistente = itensDoPedidoRepository.findById(idItem);
 
-            if (itemExistente.isPresent()) {
-                itemExistente.get().setQuantidade(itensdoPedido.getQuantidade());
-                return itensDoPedidoRepository.save(itemExistente.get());
-            }
-            return null;
+        if (itemExistente.isPresent()) {
+            itemExistente.get().setQuantidade(itensdoPedido.getQuantidade());
+            return ResponseEntity.status(HttpStatus.OK).body(itensDoPedidoRepository.save(itemExistente.get()));
         }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
 
-        @DeleteMapping("/idItem")
-        public void deletarItemPeloId(@PathVariable("idItem")Long id){
-            itensDoPedidoRepository.deleteById(id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String>  deletarItemPeloId(@PathVariable("id") Long id) {
+
+        Optional<ItensDoPedido> itensDoPedido = itensDoPedidoRepository.findById(id);
+        if (itensDoPedido.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-    
+       return ResponseEntity.status(HttpStatus.OK).body("Usuario Deletado com Sucesso!");
+    }
+
 }
