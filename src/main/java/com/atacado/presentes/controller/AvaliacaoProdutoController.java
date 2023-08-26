@@ -18,7 +18,7 @@ import com.atacado.presentes.model.AvaliacaoProduto;
 import com.atacado.presentes.repository.AvaliacaoProdutoRepository;
 
 @RestController
-@RequestMapping(value = "/AvaliacaoProduto")
+@RequestMapping(value = "/avaliacao-produto")
 public class AvaliacaoProdutoController {
 
     @PostMapping
@@ -26,7 +26,7 @@ public class AvaliacaoProdutoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(avaliacaoProdutoRepository.save(avaliacaoproduto));
     }
 
-    @GetMapping("/{idAvaliacao}")
+    @GetMapping("/{id}")
     public ResponseEntity<AvaliacaoProduto> buscarAvaliacaoPeloId(@PathVariable("id") Long id) {
         Optional<AvaliacaoProduto> avaliacaoProduto = avaliacaoProdutoRepository.findById(id);
 
