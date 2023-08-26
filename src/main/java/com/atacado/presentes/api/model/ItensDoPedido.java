@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name= "tb_itens_pedidos")
+@Entity(name = "tb_itens_pedido")
 public class ItensDoPedido {
 
     @Id
@@ -21,5 +21,5 @@ public class ItensDoPedido {
 
     @Column(nullable = false)
     private int quantidade;
-    
+
 }
