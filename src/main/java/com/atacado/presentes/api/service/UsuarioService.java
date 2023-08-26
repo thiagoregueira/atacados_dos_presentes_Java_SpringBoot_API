@@ -1,5 +1,6 @@
 package com.atacado.presentes.api.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,11 +12,18 @@ import com.atacado.presentes.api.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 
+    @Autowired
     private Mensagem mensagem;
 
+    @Autowired
     private UsuarioRepository acao;
 
     public ResponseEntity<?> cadastrar(Usuario obj) {
+
+        if (obj == null) {
+            mensagem.setMensagem("O objeto Usuario não pode ser nulo");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+        }
 
         if (obj.getEmail().equals("")) {
             mensagem.setMensagem("O email precisa ser preenchido");
@@ -23,10 +31,6 @@ public class UsuarioService {
 
         } else if (obj.getSenha().equals("")) {
             mensagem.setMensagem("A senha precisa ser preenchida");
-            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-
-        } else if (obj.getPerfil().equals("")) {
-            mensagem.setMensagem("O perfil precisa ser preenchido");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
 
         } else {
@@ -66,26 +70,25 @@ public class UsuarioService {
         }
     }
 
-    public ResponseEntity<?> atualizar(Usuario obj) {
+    public ResponseEntity<?> atualizarPeloId(Usuario id) {
 
-        if (acao.countByIdUsuario(obj.getIdUsuario()) == 0) {
+        if (acao.countByIdUsuario(id.getIdUsuario()) == 0) {
             mensagem.setMensagem("O codigo informado não existe");
             return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
 
-        } else if (obj.getEmail().equals("")) {
+        } else if (id.getEmail().equals("")) {
             mensagem.setMensagem("O email precisa ser preenchido");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
 
-        } else if (obj.getSenha().equals("")) {
+        } else if (id.getSenha().equals("")) {
             mensagem.setMensagem("A senha precisa ser preenchida");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
 
-        } else if (obj.getPerfil().equals("")) {
-            mensagem.setMensagem("O perfil precisa ser preenchido");
-            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity<>(acao.save(obj), HttpStatus.OK);
-        }
 
+            Usuario usuarioAtualizado = acao.save(id);
+            return new ResponseEntity<>(usuarioAtualizado, HttpStatus.OK);
+        }
     }
+
 }

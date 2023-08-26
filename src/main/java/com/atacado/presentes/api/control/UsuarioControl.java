@@ -10,20 +10,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.atacado.presentes.api.model.Usuario;
-import com.atacado.presentes.api.repository.UsuarioRepository;
 import com.atacado.presentes.api.service.UsuarioService;
 
 @RestController
 public class UsuarioControl {
 
     @Autowired
-    private UsuarioRepository acao;
-
-    @Autowired
     private UsuarioService servico;
 
     // cadastrar
-    @PostMapping("/usuarios")
+    @PostMapping("/api")
     public ResponseEntity<?> cadastrar(@RequestBody Usuario obj) {
         return servico.cadastrar(obj);
     }
@@ -42,13 +38,13 @@ public class UsuarioControl {
     }
 
     // atualizar
-    @PutMapping("/api")
+    @PutMapping("/api/atualizar/{id}")
     public ResponseEntity<?> atualizar(@RequestBody Usuario obj) {
-        return servico.atualizar(obj);
+        return servico.atualizarPeloId(obj);
     }
 
     // remover por id
-    @DeleteMapping("/api/{id}")
+    @DeleteMapping("/api/remover/{id}")
     public ResponseEntity<?> removerPorId(@PathVariable int id) {
         return servico.removerPorId(id);
     }
