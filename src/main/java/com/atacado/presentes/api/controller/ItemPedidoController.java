@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +27,7 @@ public class ItemPedidoController {
 
     @PostMapping
     public ResponseEntity<ItemPedido> cadastrarItemDoPedido(@RequestBody ItemPedido itensDoPedido) {
-        return ResponseEntity.status(HttpStatus.OK).body(itensDoPedidoRepository.save(itensDoPedido));
+        return ResponseEntity.status(HttpStatus.CREATED).body(itensDoPedidoRepository.save(itensDoPedido));
     }
 
     @GetMapping
