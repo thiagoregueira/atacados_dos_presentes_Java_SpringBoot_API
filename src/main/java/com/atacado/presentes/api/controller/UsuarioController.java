@@ -60,15 +60,16 @@ public class UsuarioController {
     }
 
     // remover por id
-    @DeleteMapping("deletar/{id}")
-    public ResponseEntity<?> removerPorId(@PathVariable int id) {
-        if (acao.countByIdUsuario(id) == 0) {
-            return ResponseEntity.badRequest().build();
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> removerPeloId(@PathVariable Integer id) {
+        Optional<Usuario> categoria = acao.findById(id);
 
-        } else {
-            acao.deleteById(id);
-            return ResponseEntity.ok().build();
+        if (categoria.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
+        acao.deleteById(id);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Usuario deletada com sucesso!");
     }
 }
