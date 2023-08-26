@@ -62,9 +62,9 @@ public class UsuarioController {
     // remover por id
     @DeleteMapping("/{id}")
     public ResponseEntity<?> removerPeloId(@PathVariable Integer id) {
-        Optional<Usuario> categoria = acao.findById(id);
+        Optional<Usuario> usuario = acao.findById(id);
 
-        if (categoria.isEmpty()) {
+        if (usuario.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
