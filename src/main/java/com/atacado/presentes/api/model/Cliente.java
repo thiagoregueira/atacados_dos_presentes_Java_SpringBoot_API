@@ -30,6 +30,6 @@ public class Cliente {
     private String sobrenome;
     
     @Column(nullable = false)
-    @JsonFormat(pattern = "dd/MM/yyy")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento; 
 }
