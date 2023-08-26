@@ -31,5 +31,5 @@ public class Cliente {
     
     @Column(nullable = false)
     @JsonFormat(pattern = "dd/MM/yyy")
-    private LocalDate dataNascimento;
+    private LocalDate dataNascimento; 
 }
