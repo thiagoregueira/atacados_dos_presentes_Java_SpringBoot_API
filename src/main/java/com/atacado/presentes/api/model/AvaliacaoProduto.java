@@ -1,4 +1,4 @@
-package com.atacado.presentes.model;
+package com.atacado.presentes.api.model;
 
 import org.springframework.data.annotation.Id;
 

@@ -1,4 +1,4 @@
-package com.atacado.presentes.controller;
+package com.atacado.presentes.api.controller;
 
 import java.util.Optional;
 
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atacado.presentes.model.AvaliacaoProduto;
-import com.atacado.presentes.repository.AvaliacaoProdutoRepository;
+import com.atacado.presentes.api.model.AvaliacaoProduto;
+import com.atacado.presentes.api.repository.AvaliacaoProdutoRepository;
 
 @RestController
 @RequestMapping(value = "/avaliacoes-produto")

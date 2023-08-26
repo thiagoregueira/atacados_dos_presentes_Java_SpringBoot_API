@@ -1,8 +1,8 @@
-package com.atacado.presentes.repository;
+package com.atacado.presentes.api.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.atacado.presentes.model.AvaliacaoProduto;
+import com.atacado.presentes.api.model.AvaliacaoProduto;
 
 public interface AvaliacaoProdutoRepository extends JpaRepository<AvaliacaoProduto, Long> {
 
