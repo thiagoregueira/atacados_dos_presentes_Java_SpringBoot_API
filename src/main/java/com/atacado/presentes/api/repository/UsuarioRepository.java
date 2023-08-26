@@ -7,10 +7,6 @@ import com.atacado.presentes.api.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-    List<Usuario> findAll();
-
-    Usuario findByIdUsuario(int idUsuario);
-
     int countByIdUsuario(int idUsuario);
 
 }
