@@ -19,32 +19,32 @@ public class UsuarioControl {
     private UsuarioService servico;
 
     // cadastrar
-    @PostMapping("/api")
+    @PostMapping("/cadastrar-usuario")
     public ResponseEntity<?> cadastrar(@RequestBody Usuario obj) {
         return servico.cadastrar(obj);
     }
 
     // listar todos
-    @GetMapping("/api")
+    @GetMapping("/listar-usuarios")
     public ResponseEntity<?> listarTodos() {
         return servico.listarTodos();
 
     }
 
     // buscar por id
-    @GetMapping("/api/{id}")
+    @GetMapping("/buscar-usuario/{id}")
     public ResponseEntity<?> selecionarPorId(@PathVariable int id) {
         return servico.selecionarPeloId(id);
     }
 
     // atualizar
-    @PutMapping("/api/atualizar/{id}")
+    @PutMapping("atualizar-usuario/{id}")
     public ResponseEntity<?> atualizar(@RequestBody Usuario obj) {
         return servico.atualizarPeloId(obj);
     }
 
     // remover por id
-    @DeleteMapping("/api/remover/{id}")
+    @DeleteMapping("deletar-usuario/{id}")
     public ResponseEntity<?> removerPorId(@PathVariable int id) {
         return servico.removerPorId(id);
     }
