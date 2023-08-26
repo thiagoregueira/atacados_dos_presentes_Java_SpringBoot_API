@@ -31,39 +31,42 @@ public class PedidosController {
 
     //Listar todos
     @GetMapping
-    public Page<Pedidos> listarPedidos(Pageable paginacao){
-        return pedidosRepository.findAll(paginacao);
+    public ResponseEntity<Page<Pedidos>> listarPedidos(Pageable paginacao){
+        return ResponseEntity.status(HttpStatus.OK).body(pedidosRepository.findAll(paginacao));
     }
 
     //Listar pelo Id
     @GetMapping("/{id}")
-    public Optional<Pedidos> buscarPedidoPeloId(@PathVariable("id") Long id){
-        return pedidosRepository.findById(id);
+    public ResponseEntity<Pedidos> buscarPedidoPeloId(@PathVariable("id") Long id){
+    Optional<Pedidos> pedido = pedidosRepository.findById(id);
+    if(pedido.isEmpty()){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+        return ResponseEntity.status(HttpStatus.OK).body(pedido.get());
     }
 
     //Atualizar Pedido
     @PutMapping("/{id}")
-    public Pedidos atualizarPedidos(@PathVariable("id") Long id, @RequestBody Pedidos pedidos){
+    public ResponseEntity<Pedidos> atualizarPedidos(@PathVariable("id") Long id, @RequestBody Pedidos pedidos){
         Optional<Pedidos> pedidosCadastrado = pedidosRepository.findById(id);
 
             if(pedidosCadastrado.isPresent()){
                 pedidosCadastrado.get().setData(pedidos.getData());
                 pedidosCadastrado.get().setStatus(pedidos.getStatus());
-
-                return pedidosRepository.save(pedidosCadastrado.get());
+                return ResponseEntity.status(HttpStatus.OK).body(pedidosRepository.save(pedidosCadastrado.get()));
             }
-            return null;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    //Excluir Pedido
     @DeleteMapping("/{id}")
-    public String deletarPedidoPeloId(@PathVariable("id") Long id){
+    public ResponseEntity<String> deletarPedidoPeloId(@PathVariable("id") Long id){
         Optional<Pedidos> pedidosCadastrado = pedidosRepository.findById(id);
 
-        if(pedidosCadastrado.isPresent()){
-            pedidosRepository.deleteById(id);
-            return "Pedido excluido com sucesso!";
+        if(pedidosCadastrado.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        return "Pedido não existe!";
+        return ResponseEntity.status(HttpStatus.OK).body("Pedido excluido com sucesso!");
     }
 
     @Autowired
