@@ -13,13 +13,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "tb_itens_pedido")
-public class ItensDoPedido {
+public class ItemDoPedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idItem;
 
     @Column(nullable = false)
-    private int quantidade;
+    private Integer quantidade;
 
 }
