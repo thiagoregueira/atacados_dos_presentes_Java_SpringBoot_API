@@ -5,6 +5,6 @@ import com.atacado.presentes.api.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-    int countByIdUsuario(int idUsuario);
+    
 
 }

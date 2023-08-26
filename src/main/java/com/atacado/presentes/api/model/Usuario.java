@@ -4,6 +4,8 @@ import com.atacado.presentes.api.constants.Perfil;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,6 +32,7 @@ public class Usuario {
     private String senha;
 
     @Column(nullable = false, length = 20)
+    @Enumerated(EnumType.STRING)
     private Perfil perfil;
 
     @Column(length = 50)

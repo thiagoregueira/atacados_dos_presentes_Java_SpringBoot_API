@@ -3,6 +3,8 @@ package com.atacado.presentes.api.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,22 +26,27 @@ public class UsuarioController {
     private UsuarioRepository acao;
 
     // cadastrar
-    @PostMapping("/cadastrar")
-    public ResponseEntity<?> cadastrar(@RequestBody Usuario obj) {
-        return ResponseEntity.ok(acao.save(obj));
+    @PostMapping
+    public ResponseEntity<?> cadastrarCategoria(@RequestBody Usuario usuario) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(acao.save(usuario));
     }
 
     // listar todos
-    @GetMapping("/listar")
-    public ResponseEntity<?> listarTodos() {
-        return ResponseEntity.ok(acao.findAll());
-
+    @GetMapping
+    public ResponseEntity<Page<Usuario>> listarUsuarios(Pageable paginacao) {
+        return ResponseEntity.status(HttpStatus.OK).body(acao.findAll(paginacao));
     }
 
     // buscar por id
-    @GetMapping("/buscar/{id}")
-    public ResponseEntity<?> buscarPorId(@PathVariable int id) {
-        return ResponseEntity.ok(acao.findById(id));
+    @GetMapping("/{id}")
+    public ResponseEntity<Usuario> listarPeloId(@PathVariable("id") Integer id) {
+        Optional<Usuario> usuario = acao.findById(id);
+
+        if (usuario.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(usuario.get());
     }
 
     // atualizar
