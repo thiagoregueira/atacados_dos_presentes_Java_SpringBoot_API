@@ -66,4 +66,26 @@ public class UsuarioService {
         }
     }
 
+    public ResponseEntity<?> atualizar(Usuario obj) {
+
+        if (acao.countByIdUsuario(obj.getIdUsuario()) == 0) {
+            mensagem.setMensagem("O codigo informado não existe");
+            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+
+        } else if (obj.getEmail().equals("")) {
+            mensagem.setMensagem("O email precisa ser preenchido");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+
+        } else if (obj.getSenha().equals("")) {
+            mensagem.setMensagem("A senha precisa ser preenchida");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+
+        } else if (obj.getPerfil().equals("")) {
+            mensagem.setMensagem("O perfil precisa ser preenchido");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(acao.save(obj), HttpStatus.OK);
+        }
+
+    }
 }

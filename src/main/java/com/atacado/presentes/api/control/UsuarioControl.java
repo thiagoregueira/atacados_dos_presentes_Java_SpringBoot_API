@@ -43,8 +43,8 @@ public class UsuarioControl {
 
     // atualizar
     @PutMapping("/api")
-    public Usuario atualizar(@RequestBody Usuario obj) {
-        return acao.save(obj);
+    public ResponseEntity<?> atualizar(@RequestBody Usuario obj) {
+        return servico.atualizar(obj);
     }
 
     // remover por id
