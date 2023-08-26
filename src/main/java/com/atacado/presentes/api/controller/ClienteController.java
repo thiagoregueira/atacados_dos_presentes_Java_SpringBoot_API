@@ -32,6 +32,17 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.OK).body(repository.findAll(paginacao));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Cliente> listarClientePeloId(@PathVariable("id") Long id) {
+        Optional<Cliente> cliente = repository.findById(id);
+
+        if(cliente.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(cliente.get());
+    }
+
     @PostMapping
     public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
         return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(cliente));
