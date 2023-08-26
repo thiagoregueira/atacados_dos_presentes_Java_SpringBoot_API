@@ -20,7 +20,7 @@ import com.atacado.presentes.api.model.Pedido;
 import com.atacado.presentes.api.repository.PedidoRepository;
 
 @RestController
-@RequestMapping(value = "/pedido")
+@RequestMapping(value = "/pedidos")
 public class PedidoController {
 
     @PostMapping
@@ -29,7 +29,7 @@ public class PedidoController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Pedido>> listarpedido(Pageable paginacao) {
+    public ResponseEntity<Page<Pedido>> listarPedido(Pageable paginacao) {
         return ResponseEntity.status(HttpStatus.OK).body(pedidoRepository.findAll(paginacao));
     }
 
@@ -43,7 +43,7 @@ public class PedidoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Pedido> atualizarpedido(@PathVariable("id") Long id, @RequestBody Pedido pedido) {
+    public ResponseEntity<Pedido> atualizarPedido(@PathVariable("id") Long id, @RequestBody Pedido pedido) {
         Optional<Pedido> pedidoCadastrado = pedidoRepository.findById(id);
 
         if (pedidoCadastrado.isPresent()) {
