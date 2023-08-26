@@ -24,10 +24,10 @@ import com.atacado.presentes.api.repository.CategoriaRepository;
 public class CategoriaController {
 
     @Autowired
-    CategoriaRepository categoriaRepository;
+    private CategoriaRepository categoriaRepository;
 
     @GetMapping
-    public ResponseEntity<Page<Categoria>> listarCategoria(Pageable paginacao) {
+    public ResponseEntity<Page<Categoria>> listarCategorias(Pageable paginacao) {
         return ResponseEntity.status(HttpStatus.OK).body(categoriaRepository.findAll(paginacao));
     }
 
