@@ -46,7 +46,6 @@ public class ClienteController {
     @PostMapping
     public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
         Usuario usuario = cliente.getUsuario();
-
         cliente.setUsuario(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(clienteRepository.save(cliente));
     }
