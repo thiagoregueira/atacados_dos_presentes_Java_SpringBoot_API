@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "489676b3-3e59-4925-83fe-7a0fa01648de",
+		"name": "ItemPedidos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28264391"
+	},
+	"item": [
+		{
+			"name": "Cadastrar itens-pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/itens-pedido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"itens-pedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Itens Pedidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/itens-pedido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"itens-pedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Pedidos pelo id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/itens-pedido/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"itens-pedido",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Itens pedidos",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/itens-pedido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"itens-pedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Excluir Item Pedido",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/itens-pedido/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"itens-pedido",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
