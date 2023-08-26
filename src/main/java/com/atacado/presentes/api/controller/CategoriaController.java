@@ -32,7 +32,7 @@ public class CategoriaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Categoria> listarPeloId(@PathVariable("id") Long id) {
+    public ResponseEntity<Categoria> listarCategoriaPeloId(@PathVariable("id") Long id) {
         Optional<Categoria> categoria = categoriaRepository.findById(id);
 
         if (categoria.isEmpty()) {
