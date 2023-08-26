@@ -24,7 +24,7 @@ import com.atacado.presentes.api.repository.ClienteRepository;
 public class ClienteController {
     
     @Autowired
-    ClienteRepository repository;
+    private ClienteRepository repository;
 
 
     @GetMapping
