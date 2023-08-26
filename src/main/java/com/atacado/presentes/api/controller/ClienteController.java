@@ -24,17 +24,17 @@ import com.atacado.presentes.api.repository.ClienteRepository;
 public class ClienteController {
     
     @Autowired
-    private ClienteRepository repository;
+    private ClienteRepository clienteRepository;
 
 
     @GetMapping
     public ResponseEntity<Page<Cliente>> listarClientes(Pageable paginacao) {
-        return ResponseEntity.status(HttpStatus.OK).body(repository.findAll(paginacao));
+        return ResponseEntity.status(HttpStatus.OK).body(clienteRepository.findAll(paginacao));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> listarClientePeloId(@PathVariable("id") Long id) {
-        Optional<Cliente> cliente = repository.findById(id);
+        Optional<Cliente> cliente = clienteRepository.findById(id);
 
         if(cliente.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -45,12 +45,12 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(cliente));
+        return ResponseEntity.status(HttpStatus.CREATED).body(clienteRepository.save(cliente));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> atualizarCliente(@PathVariable("id") Long id, @RequestBody Cliente cliente) {
-        Optional<Cliente> clienteExistente = repository.findById(id);
+        Optional<Cliente> clienteExistente = clienteRepository.findById(id);
 
         if (clienteExistente.isPresent()) {
             clienteExistente.get().setNome(cliente.getNome());
@@ -58,7 +58,7 @@ public class ClienteController {
             clienteExistente.get().setDataNascimento(cliente.getDataNascimento());
             
 
-            return ResponseEntity.status(HttpStatus.OK).body(repository.save(clienteExistente.get()));
+            return ResponseEntity.status(HttpStatus.OK).body(clienteRepository.save(clienteExistente.get()));
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -66,13 +66,13 @@ public class ClienteController {
     
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarcClientePeloId(@PathVariable Long id) {
-        Optional<Cliente> cliente = repository.findById(id);
+        Optional<Cliente> cliente = clienteRepository.findById(id);
 
         if (cliente.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
-        repository.deleteById(id);
+        clienteRepository.deleteById(id);
 
         return ResponseEntity.status(HttpStatus.OK).body("Cliente deletado com sucesso!");
     }
