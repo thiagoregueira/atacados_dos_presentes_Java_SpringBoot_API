@@ -1,5 +1,7 @@
 package com.atacado.presentes.api.model;
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
