@@ -54,6 +54,7 @@ public class FornecedorController {
             fornecedorExistente.get().setNomeFantasia(fornecedor.getNomeFantasia());
             fornecedorExistente.get().setRazaoSocial(fornecedor.getRazaoSocial());
             fornecedorExistente.get().setCnpj(fornecedor.getCnpj());
+            fornecedorExistente.get().setEndereco(fornecedor.getEndereco());
 
             return ResponseEntity.status(HttpStatus.OK).body(fornecedorRepository.save(fornecedorExistente.get()));
         }
