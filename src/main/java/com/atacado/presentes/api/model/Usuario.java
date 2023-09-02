@@ -1,6 +1,7 @@
 package com.atacado.presentes.api.model;
 
 import com.atacado.presentes.api.constants.Perfil;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,6 +37,7 @@ public class Usuario {
     private Perfil perfil;
 
     @Column(length = 50)
+    @JsonFormat(pattern = "\\d{2}.\\d{9}")
     private String telefone;
 
 }
