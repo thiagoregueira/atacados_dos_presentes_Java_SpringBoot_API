@@ -32,7 +32,7 @@ public class FornecedorController {
 
     @GetMapping
     public ResponseEntity<Page<Fornecedor>> listarFornecedores(
-            @PageableDefault(size = 10, page = 1) Pageable paginacao) {
+            @PageableDefault(size = 10, page = 0) Pageable paginacao) {
         return ResponseEntity.status(HttpStatus.OK).body(fornecedorRepository.findAll(paginacao));
     }
 
