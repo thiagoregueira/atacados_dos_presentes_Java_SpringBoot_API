@@ -1,5 +1,6 @@
 package com.atacado.presentes.api.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class AvaliacaoProdutoController {
     @PostMapping
     public ResponseEntity<AvaliacaoProduto> cadastrarNovaAvaliacao(@RequestBody AvaliacaoProduto avaliacaoProduto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(avaliacaoProdutoRepository.save(avaliacaoProduto));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<AvaliacaoProduto>> listarItens() {
+        return ResponseEntity.status(HttpStatus.OK).body(avaliacaoProdutoRepository.findAll());
     }
 
     @GetMapping("/{id}")
