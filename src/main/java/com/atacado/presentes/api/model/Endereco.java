@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class Endereco {
 
     @Column(nullable = true, length = 10)
-    @JsonFormat(pattern = "\\d{2}.\\d{3}-\\d{3")
+    @JsonFormat(pattern = "\\d{2}.\\d{3}-\\d{3}")
     private String cep;
 
     @Column(nullable = true, length = 255)
