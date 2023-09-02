@@ -62,8 +62,11 @@ public class AvaliacaoProdutoController {
         if (avaliacaoProduto.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+<<<<<<< HEAD
 
         avaliacaoProdutoRepository.deleteById(id);
+=======
+>>>>>>> 5c2ac17 (APR-025 adição do no_content em todas as classes controles no método delete)
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Avaliação deletada com sucesso");
     }
 

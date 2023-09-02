@@ -61,7 +61,11 @@ public class ItemPedidoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         itensDoPedidoRepository.deleteById(id);
+<<<<<<< HEAD
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Pedidos de Itens Deletado com Sucesso!");
+=======
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Pedidos de itens deletado com Sucesso!");
+>>>>>>> 5c2ac17 (APR-025 adição do no_content em todas as classes controles no método delete)
     }
 
 }
