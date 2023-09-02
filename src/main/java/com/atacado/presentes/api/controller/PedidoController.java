@@ -61,6 +61,7 @@ public class PedidoController {
         if (pedidoCadastrado.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+        pedidoRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).body("Pedido excluido com sucesso!");
     }
 
