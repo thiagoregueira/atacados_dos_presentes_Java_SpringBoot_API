@@ -60,6 +60,7 @@ public class ItemPedidoController {
         if (itensDoPedido.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+        itensDoPedidoRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).body("Usuario Deletado com Sucesso!");
     }
 

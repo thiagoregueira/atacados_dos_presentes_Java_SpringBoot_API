@@ -62,6 +62,8 @@ public class AvaliacaoProdutoController {
         if (avaliacaoProduto.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+
+        avaliacaoProdutoRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).body("Avaliação deletada com sucesso");
     }
 
