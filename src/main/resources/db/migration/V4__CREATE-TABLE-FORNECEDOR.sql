@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS tb_fonecedores(
+CREATE TABLE IF NOT EXISTS tb_fornecedores(
     idFornecedor BIGINT NOT NULL AUTO_INCREMENT,
     nomeFantasia VARCHAR(255) NOT NULL,
     razaoSocial VARCHAR(255) NOT NULL,
