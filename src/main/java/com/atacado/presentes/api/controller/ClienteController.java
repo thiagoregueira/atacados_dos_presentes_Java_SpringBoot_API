@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.atacado.presentes.api.model.Cliente;
 import com.atacado.presentes.api.model.Usuario;
 import com.atacado.presentes.api.repository.ClienteRepository;
-import com.atacado.presentes.api.repository.UsuarioRepository;
+// import com.atacado.presentes.api.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping(value = "/clientes")
@@ -28,8 +28,8 @@ public class ClienteController {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    // @Autowired
+    // private UsuarioRepository usuarioRepository;
 
     @GetMapping
     public ResponseEntity<Page<Cliente>> listarClientes(Pageable paginacao) {
@@ -50,7 +50,7 @@ public class ClienteController {
     @PostMapping
     public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
         Usuario usuario = cliente.getUsuario();
-        usuarioRepository.save(usuario);
+        
         cliente.setUsuario(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(clienteRepository.save(cliente));
     }
