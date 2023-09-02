@@ -46,6 +46,9 @@ public class AvaliacaoProdutoController {
         if (avaliacaoProdutoExistente.isPresent()) {
             avaliacaoProdutoExistente.get().setPontuacao(avaliacaoProduto.getPontuacao());
             avaliacaoProdutoExistente.get().setComentario(avaliacaoProduto.getComentario());
+            avaliacaoProdutoExistente.get().setCliente(avaliacaoProduto.getCliente());
+            avaliacaoProdutoExistente.get().setProduto(avaliacaoProduto.getProduto());
+
             return ResponseEntity.status(HttpStatus.OK)
                     .body(avaliacaoProdutoRepository.save(avaliacaoProdutoExistente.get()));
         }

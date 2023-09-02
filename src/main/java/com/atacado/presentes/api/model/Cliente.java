@@ -42,4 +42,5 @@ public class Cliente {
     @OneToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
+
 }
