@@ -54,13 +54,13 @@ public class ItemPedidoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String>  deletarItemPeloId(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deletarItemPeloId(@PathVariable("id") Long id) {
 
         Optional<ItemPedido> itensDoPedido = itensDoPedidoRepository.findById(id);
         if (itensDoPedido.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-       return ResponseEntity.status(HttpStatus.OK).body("Usuario Deletado com Sucesso!");
+        return ResponseEntity.status(HttpStatus.OK).body("Usuario Deletado com Sucesso!");
     }
 
 }

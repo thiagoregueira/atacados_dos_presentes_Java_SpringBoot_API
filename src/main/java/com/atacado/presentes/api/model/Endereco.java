@@ -40,4 +40,3 @@ public class Endereco {
     private String pontoDeReferencia;
 
 }
-

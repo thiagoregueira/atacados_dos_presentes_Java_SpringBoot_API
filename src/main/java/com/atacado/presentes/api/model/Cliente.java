@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity(name = "tb_clientes")
 public class Cliente {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCliente;
@@ -28,8 +28,8 @@ public class Cliente {
 
     @Column(nullable = false, length = 255)
     private String sobrenome;
-    
+
     @Column(nullable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataNascimento; 
+    private LocalDate dataNascimento;
 }

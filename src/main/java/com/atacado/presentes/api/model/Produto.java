@@ -6,14 +6,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Entity(name = "tb_produtos")
 public class Produto {
     @Id
@@ -21,7 +19,7 @@ public class Produto {
     private Long idProduto;
 
     @Column(nullable = false, length = 255)
-    private String  nome;
+    private String nome;
 
     @Column(nullable = false)
     private Double preco;

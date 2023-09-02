@@ -22,10 +22,9 @@ import com.atacado.presentes.api.repository.ClienteRepository;
 @RestController
 @RequestMapping(value = "/clientes")
 public class ClienteController {
-    
+
     @Autowired
     private ClienteRepository clienteRepository;
-
 
     @GetMapping
     public ResponseEntity<Page<Cliente>> listarClientes(Pageable paginacao) {
@@ -36,7 +35,7 @@ public class ClienteController {
     public ResponseEntity<Cliente> listarClientePeloId(@PathVariable("id") Long id) {
         Optional<Cliente> cliente = clienteRepository.findById(id);
 
-        if(cliente.isEmpty()) {
+        if (cliente.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
@@ -56,14 +55,13 @@ public class ClienteController {
             clienteExistente.get().setNome(cliente.getNome());
             clienteExistente.get().setSobrenome(cliente.getSobrenome());
             clienteExistente.get().setDataNascimento(cliente.getDataNascimento());
-            
 
             return ResponseEntity.status(HttpStatus.OK).body(clienteRepository.save(clienteExistente.get()));
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
-    
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarcClientePeloId(@PathVariable Long id) {
         Optional<Cliente> cliente = clienteRepository.findById(id);

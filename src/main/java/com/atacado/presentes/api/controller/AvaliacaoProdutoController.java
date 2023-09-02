@@ -30,7 +30,7 @@ public class AvaliacaoProdutoController {
     public ResponseEntity<AvaliacaoProduto> buscarAvaliacaoPeloId(@PathVariable("id") Long id) {
         Optional<AvaliacaoProduto> avaliacaoProduto = avaliacaoProdutoRepository.findById(id);
 
-        if(avaliacaoProduto.isEmpty()){
+        if (avaliacaoProduto.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
@@ -46,7 +46,8 @@ public class AvaliacaoProdutoController {
         if (avaliacaoProdutoExistente.isPresent()) {
             avaliacaoProdutoExistente.get().setPontuacao(avaliacaoProduto.getPontuacao());
             avaliacaoProdutoExistente.get().setComentario(avaliacaoProduto.getComentario());
-            return ResponseEntity.status(HttpStatus.OK).body(avaliacaoProdutoRepository.save(avaliacaoProdutoExistente.get()));
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(avaliacaoProdutoRepository.save(avaliacaoProdutoExistente.get()));
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -54,12 +55,13 @@ public class AvaliacaoProdutoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarAvaliacaoPeloId(@PathVariable("id") Long id) {
-       Optional<AvaliacaoProduto> avaliacaoProduto = avaliacaoProdutoRepository.findById(id);
-       if(avaliacaoProduto.isEmpty()){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); 
+        Optional<AvaliacaoProduto> avaliacaoProduto = avaliacaoProdutoRepository.findById(id);
+        if (avaliacaoProduto.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body("Avaliação deletada com sucesso");
     }
-       return ResponseEntity.status(HttpStatus.OK).body("Avaliação deletada com sucesso");
-    }
+
     @Autowired
     private AvaliacaoProdutoRepository avaliacaoProdutoRepository;
 
