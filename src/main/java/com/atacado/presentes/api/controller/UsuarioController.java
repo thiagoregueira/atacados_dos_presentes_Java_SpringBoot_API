@@ -72,6 +72,6 @@ public class UsuarioController {
 
         usuarioRepository.deleteById(id);
 
-        return ResponseEntity.status(HttpStatus.OK).body("Usuario deletada com sucesso!");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Usuario deletada com sucesso!");
     }
 }
