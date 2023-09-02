@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,12 +37,10 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Produto>> listarProdutos() {
+    public ResponseEntity<Page<Produto>> listarProdutos(
+            @PageableDefault(size = 10, page = 0) Pageable paginacao) {
 
-        List<Produto> produtosList = produtosRepository.findAll();
-
-        return ResponseEntity.ok().body(produtosList);
-
+        return ResponseEntity.status(HttpStatus.OK).body(produtosRepository.findAll(paginacao));
     }
 
     @GetMapping("/{id}")
