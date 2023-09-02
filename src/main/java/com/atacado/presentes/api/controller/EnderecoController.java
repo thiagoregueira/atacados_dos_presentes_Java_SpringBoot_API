@@ -1,5 +1,7 @@
 package com.atacado.presentes.api.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +16,7 @@ import com.atacado.presentes.dto.EnderecoDto;
 public class EnderecoController {
 
     @PostMapping("")
-    public Endereco getEndereco(@RequestBody EnderecoDto enderecoDto) {
+    public ResponseEntity<Endereco> getEndereco(@RequestBody EnderecoDto enderecoDto) {
         RestTemplate restTemplate = new RestTemplate();
 
         EnderecoDto resposta = restTemplate.getForObject("https://viacep.com.br/ws/" + enderecoDto.getCep() + "/json",
@@ -30,8 +32,8 @@ public class EnderecoController {
             endereco.setCidade(resposta.getLocalidade());
             endereco.setUf(resposta.getUf());
 
-            return endereco;
+            return ResponseEntity.ok().body(endereco);
         }
-        return null;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
