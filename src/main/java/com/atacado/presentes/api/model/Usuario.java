@@ -11,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,7 +39,7 @@ public class Usuario {
     private Perfil perfil;
 
     @Column(length = 50)
-    @JsonFormat(pattern = "\\d{2}.\\d{4,5}-\\d{4}")
+    @Pattern(regexp = "\\d{2}.\\d{4,5}-\\d{4}")
     private String telefone;
 
 }
