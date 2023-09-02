@@ -8,4 +8,5 @@ _________ _______  _______ _________ _        _______    _______  _______  _____
    )_(   |/   \__/(_______/\_______/|/    )_)|/     \|  |/   \__/(_______/(_______/\_______/|/       (_______/
                                                                                                               
 
-Autores: Turma Agosto/2023 - Java Web com SpringBoot!                                                                                                           
+Autores: Turma Agosto/2023 - Java Web com SpringBoot!
+Prof. Alexandre Junior                                                                                                        
