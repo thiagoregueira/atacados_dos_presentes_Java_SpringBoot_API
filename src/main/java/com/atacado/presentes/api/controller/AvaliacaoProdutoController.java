@@ -27,20 +27,28 @@ public class AvaliacaoProdutoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(avaliacaoProdutoRepository.save(avaliacaoProduto));
     }
 
-     public ResponseEntity<List<AvaliacaoProduto>> listarAvaliacaoProduto() {
-        return ResponseEntity.status(HttpStatus.OK).body(avaliacaoProdutoRepository.findAll());
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<AvaliacaoProduto> buscarAvaliacaoPeloId(@PathVariable("id") Long id) {
-        Optional<AvaliacaoProduto> avaliacaoProduto = avaliacaoProdutoRepository.findById(id);
-
-        if (avaliacaoProduto.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+   
+    @GetMapping("/produto/{id}")
+    public ResponseEntity<List<AvaliacaoProduto>> listarAvaliacoesDoProduto(@PathVariable("id") Long produtoId) {
+        Optional<List<AvaliacaoProduto>> avaliacoesDoProduto = avaliacaoProdutoRepository.findByProduto(produtoId);
+        
+        if (avaliacoesDoProduto.isEmpty()) {
+            return ResponseEntity.notFound().build();
         }
-
-        return ResponseEntity.status(HttpStatus.OK).body(avaliacaoProduto.get());
+    
+        return ResponseEntity.status(HttpStatus.OK).body(avaliacoesDoProduto.get());
     }
+
+@GetMapping("/{id}")
+public ResponseEntity<AvaliacaoProduto> buscarAvaliacaoPeloId(@PathVariable("id") Long id) {
+    Optional<AvaliacaoProduto> avaliacaoProduto = avaliacaoProdutoRepository.findById(id);
+
+    if (avaliacaoProduto.isEmpty()) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    return ResponseEntity.status(HttpStatus.OK).body(avaliacaoProduto.get());
+}
 
     @PutMapping("/{id}")
     public ResponseEntity<AvaliacaoProduto> atualizarAvaliacaoProduto(
