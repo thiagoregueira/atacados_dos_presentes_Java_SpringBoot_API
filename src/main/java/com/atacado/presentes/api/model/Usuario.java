@@ -37,7 +37,7 @@ public class Usuario {
     private Perfil perfil;
 
     @Column(length = 50)
-    @JsonFormat(pattern = "\\d{2}.\\d{9}")
+    @JsonFormat(pattern = "\\d{2}.\\d{4,5}-\\d{4}")
     private String telefone;
 
 }
