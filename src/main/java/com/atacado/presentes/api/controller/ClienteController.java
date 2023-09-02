@@ -63,6 +63,7 @@ public class ClienteController {
             clienteExistente.get().setNome(cliente.getNome());
             clienteExistente.get().setSobrenome(cliente.getSobrenome());
             clienteExistente.get().setDataNascimento(cliente.getDataNascimento());
+            clienteExistente.get().setEndereco(cliente.getEndereco());
 
             return ResponseEntity.status(HttpStatus.OK).body(clienteRepository.save(clienteExistente.get()));
         }
