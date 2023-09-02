@@ -71,6 +71,6 @@ public class CategoriaController {
 
         categoriaRepository.deleteById(id);
 
-        return ResponseEntity.status(HttpStatus.OK).body("Categoria deletada com sucesso!");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Categoria deletada com sucesso!");
     }
 }

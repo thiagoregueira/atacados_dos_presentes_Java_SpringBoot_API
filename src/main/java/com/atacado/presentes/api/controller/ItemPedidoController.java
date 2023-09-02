@@ -61,7 +61,7 @@ public class ItemPedidoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         itensDoPedidoRepository.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Usuario Deletado com Sucesso!");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Pedidos de Itens Deletado com Sucesso!");
     }
 
 }

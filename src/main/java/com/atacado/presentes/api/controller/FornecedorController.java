@@ -72,7 +72,7 @@ public class FornecedorController {
 
         fornecedorRepository.deleteById(id);
 
-        return ResponseEntity.status(HttpStatus.OK).body("Fornecedor deletado com sucesso!");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Fornecedor deletado com sucesso!");
     }
 
     @Autowired

@@ -80,7 +80,7 @@ public class ClienteController {
 
         clienteRepository.deleteById(id);
 
-        return ResponseEntity.status(HttpStatus.OK).body("Cliente deletado com sucesso!");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Cliente deletado com sucesso!");
     }
 
 }
