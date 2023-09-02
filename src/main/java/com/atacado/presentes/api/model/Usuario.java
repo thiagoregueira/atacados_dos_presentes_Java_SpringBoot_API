@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,7 +26,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique = true)
     private String email;
 
     @Column(nullable = false, length = 20)
@@ -36,6 +37,7 @@ public class Usuario {
     private Perfil perfil;
 
     @Column(length = 50)
+    @Pattern(regexp = "\\d{2}.\\d{4,5}-\\d{4}")
     private String telefone;
 
 }
