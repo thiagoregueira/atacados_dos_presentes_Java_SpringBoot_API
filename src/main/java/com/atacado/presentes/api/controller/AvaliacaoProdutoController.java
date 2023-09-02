@@ -64,7 +64,7 @@ public class AvaliacaoProdutoController {
         }
 
         avaliacaoProdutoRepository.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Avaliação deletada com sucesso");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Avaliação deletada com sucesso");
     }
 
     @Autowired

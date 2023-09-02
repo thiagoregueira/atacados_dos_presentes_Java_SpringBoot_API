@@ -84,7 +84,7 @@ public class ProdutoController {
 
         produtosRepository.deleteById(id);
 
-        return ResponseEntity.ok().body("Produto deletado com sucesso!");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Produto deletado com sucesso!");
 
     }
 }
