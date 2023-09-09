@@ -1,5 +1,6 @@
 package com.atacado.presentes.api.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +27,28 @@ public class AvaliacaoProdutoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(avaliacaoProdutoRepository.save(avaliacaoProduto));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<AvaliacaoProduto> buscarAvaliacaoPeloId(@PathVariable("id") Long id) {
-        Optional<AvaliacaoProduto> avaliacaoProduto = avaliacaoProdutoRepository.findById(id);
-
-        if (avaliacaoProduto.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+   
+    @GetMapping("/produto/{id}")
+    public ResponseEntity<List<AvaliacaoProduto>> listarAvaliacoesDoProduto(@PathVariable("id") Long produtoId) {
+        Optional<List<AvaliacaoProduto>> avaliacoesDoProduto = avaliacaoProdutoRepository.findByProduto(produtoId);
+        
+        if (avaliacoesDoProduto.isEmpty()) {
+            return ResponseEntity.notFound().build();
         }
-
-        return ResponseEntity.status(HttpStatus.OK).body(avaliacaoProduto.get());
+    
+        return ResponseEntity.status(HttpStatus.OK).body(avaliacoesDoProduto.get());
     }
+
+@GetMapping("/{id}")
+public ResponseEntity<AvaliacaoProduto> buscarAvaliacaoPeloId(@PathVariable("id") Long id) {
+    Optional<AvaliacaoProduto> avaliacaoProduto = avaliacaoProdutoRepository.findById(id);
+
+    if (avaliacaoProduto.isEmpty()) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    return ResponseEntity.status(HttpStatus.OK).body(avaliacaoProduto.get());
+}
 
     @PutMapping("/{id}")
     public ResponseEntity<AvaliacaoProduto> atualizarAvaliacaoProduto(
@@ -65,6 +78,8 @@ public class AvaliacaoProdutoController {
 
         avaliacaoProdutoRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Avaliação deletada com sucesso");
+
+        
     }
 
     @Autowired
