@@ -1,5 +1,6 @@
 package com.atacado.presentes.api.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,4 +88,16 @@ public class ProdutoController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Produto deletado com sucesso!");
 
     }
+
+    @GetMapping("/categorias/{idCategoria}")
+    public ResponseEntity<List<Produto>> produtosPorCategoria(@PathVariable("idCategoria") Long idCategoria){
+
+        List<Produto> produtos = produtosRepository.findByProdutosPorCategorias(idCategoria);
+
+        if(produtos.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(produtos);
+    }  
+
 }

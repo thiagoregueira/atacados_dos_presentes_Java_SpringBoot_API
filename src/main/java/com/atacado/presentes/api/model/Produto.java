@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.DecimalMin;
@@ -20,6 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity(name = "tb_produtos")
 public class Produto {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProduto;
@@ -39,7 +41,7 @@ public class Produto {
     private Fornecedor fornecedor;
 
     @ManyToMany
-    @JoinColumn(name = "idCategoria")
+    @JoinTable(name = "tb_produtos_categorias", joinColumns = {@JoinColumn(name = "idProduto")}, inverseJoinColumns = {@JoinColumn(name = "idCategoria")})
     private List<Categoria> categorias;
 
 }
