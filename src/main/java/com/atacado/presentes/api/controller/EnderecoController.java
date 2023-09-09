@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.atacado.presentes.api.dto.EnderecoDto;
 import com.atacado.presentes.api.model.Endereco;
-import com.atacado.presentes.dto.EnderecoDto;
 
 @RestController
 @RequestMapping("/enderecos")

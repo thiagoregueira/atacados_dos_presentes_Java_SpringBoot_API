@@ -1,4 +1,4 @@
-package com.atacado.presentes.dto;
+package com.atacado.presentes.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
