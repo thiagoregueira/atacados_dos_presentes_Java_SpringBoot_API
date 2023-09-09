@@ -63,6 +63,7 @@ public class ProdutoController {
             produtoExistente.get().setNome(produtos.getNome());
             produtoExistente.get().setPreco(produtos.getPreco());
             produtoExistente.get().setDescricao(produtos.getDescricao());
+            produtoExistente.get().setFornecedor(produtos.getFornecedor());
 
             Produto produto = produtosRepository.save(produtoExistente.get());
 
