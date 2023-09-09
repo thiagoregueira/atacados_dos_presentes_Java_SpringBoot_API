@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS tb_usuarios(
     telefone VARCHAR(50),
     PRIMARY KEY(idUsuario)
 );
-
 CREATE TABLE IF NOT EXISTS tb_clientes(
     idCliente BIGINT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
@@ -16,7 +15,6 @@ CREATE TABLE IF NOT EXISTS tb_clientes(
     PRIMARY KEY(idCliente),
     FOREIGN KEY(idUsuario) REFERENCES tb_usuarios(idUsuario)
 );
-
 CREATE TABLE IF NOT EXISTS tb_fornecedores(
     idFornecedor BIGINT NOT NULL AUTO_INCREMENT,
     nomeFantasia VARCHAR(255) NOT NULL,
@@ -26,20 +24,18 @@ CREATE TABLE IF NOT EXISTS tb_fornecedores(
     PRIMARY KEY(idFornecedor),
     FOREIGN KEY (idUsuario) REFERENCES tb_usuarios(idUsuario)
 );
-
 CREATE TABLE IF NOT EXISTS tb_categorias (
     idCategoria BIGINT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(50),
-    descricao TEXT PRIMARY KEY(idCategoria)
+    descricao TEXT,
+    PRIMARY KEY(idCategoria)
 );
-
 CREATE TABLE IF NOT EXISTS tb_pedidos(
     idPedido BIGINT NOT NULL AUTO_INCREMENT,
     data DATE NOT NULL,
     status VARCHAR(50),
     PRIMARY KEY(idPedido)
 );
-
 CREATE TABLE IF NOT EXISTS tb_produtos(
     idProduto BIGINT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
@@ -51,7 +47,6 @@ CREATE TABLE IF NOT EXISTS tb_produtos(
     FOREIGN KEY(idFornecedor) REFERENCES tb_fornecedores(idFornecedor),
     FOREIGN KEY(idCategoria) REFERENCES tb_categorias(idCategoria)
 );
-
 CREATE TABLE IF NOT EXISTS tb_itens_pedido(
     idItem BIGINT NOT NULL AUTO_INCREMENT,
     quantidade INT NOT NULL,
@@ -61,7 +56,6 @@ CREATE TABLE IF NOT EXISTS tb_itens_pedido(
     FOREIGN KEY(idPedido) REFERENCES tb_pedidos(idPedido),
     FOREIGN KEY(idProduto) REFERENCES tb_produtos(idProduto)
 );
-
 CREATE TABLE IF NOT EXISTS tb_avaliacoes_produto (
     idAvaliacaoProduto BIGINT NOT NULL AUTO_INCREMENT,
     pontuacao INT(2) NULL,
@@ -72,5 +66,4 @@ CREATE TABLE IF NOT EXISTS tb_avaliacoes_produto (
     FOREIGN KEY (idCliente) REFERENCES tb_clientes(idCliente),
     FOREIGN KEY (idProduto) REFERENCES tb_produtos(idProduto)
 );
-
 -- CRIAR tb_produtos_tb_categorias
