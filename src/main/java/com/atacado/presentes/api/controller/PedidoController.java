@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atacado.presentes.api.model.Pedido;
 import com.atacado.presentes.api.repository.PedidoRepository;
+import com.atacado.presentes.api.services.EmailService;
 
 @RestController
 @RequestMapping(value = "/pedidos")
@@ -36,9 +37,11 @@ public class PedidoController {
     @GetMapping("/{id}")
     public ResponseEntity<Pedido> buscarPedidoPeloId(@PathVariable("id") Long id) {
         Optional<Pedido> pedido = pedidoRepository.findById(id);
+
         if (pedido.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+
         return ResponseEntity.status(HttpStatus.OK).body(pedido.get());
     }
 
@@ -47,10 +50,14 @@ public class PedidoController {
         Optional<Pedido> pedidoCadastrado = pedidoRepository.findById(id);
 
         if (pedidoCadastrado.isPresent()) {
+            emailService.validarMudancaStatus(pedido, pedidoCadastrado);
+
             pedidoCadastrado.get().setData(pedido.getData());
             pedidoCadastrado.get().setStatus(pedido.getStatus());
+
             return ResponseEntity.status(HttpStatus.OK).body(pedidoRepository.save(pedidoCadastrado.get()));
         }
+
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
@@ -61,10 +68,16 @@ public class PedidoController {
         if (pedidoCadastrado.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+
         pedidoRepository.deleteById(id);
+
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Pedido excluido com sucesso!");
     }
 
     @Autowired
     private PedidoRepository pedidoRepository;
+
+    @Autowired
+    private EmailService emailService;
+
 }

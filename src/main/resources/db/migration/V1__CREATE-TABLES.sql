@@ -12,6 +12,14 @@ CREATE TABLE IF NOT EXISTS tb_clientes(
     nome VARCHAR(50) NOT NULL,
     sobrenome VARCHAR(255) NOT NULL,
     dataNascimento DATE,
+    cep VARCHAR(10),
+    logradouro VARCHAR(255),
+    numero VARCHAR(10),
+    complemento VARCHAR(50),
+    bairro VARCHAR(50),
+    cidade VARCHAR(50),
+    uf VARCHAR(2),
+    pontoDeReferencia VARCHAR(255),
     idUsuario BIGINT NOT NULL,
     PRIMARY KEY(idCliente),
     FOREIGN KEY(idUsuario) REFERENCES tb_usuarios(idUsuario)
@@ -22,6 +30,14 @@ CREATE TABLE IF NOT EXISTS tb_fornecedores(
     nomeFantasia VARCHAR(255) NOT NULL,
     razaoSocial VARCHAR(255) NOT NULL,
     cnpj VARCHAR(18) NOT NULL,
+    cep VARCHAR(10),
+    logradouro VARCHAR(255),
+    numero VARCHAR(10),
+    complemento VARCHAR(50),
+    bairro VARCHAR(50),
+    cidade VARCHAR(50),
+    uf VARCHAR(2),
+    pontoDeReferencia VARCHAR(255),
     idUsuario BIGINT NOT NULL,
     PRIMARY KEY(idFornecedor),
     FOREIGN KEY (idUsuario) REFERENCES tb_usuarios(idUsuario)
@@ -30,7 +46,8 @@ CREATE TABLE IF NOT EXISTS tb_fornecedores(
 CREATE TABLE IF NOT EXISTS tb_categorias (
     idCategoria BIGINT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(50),
-    descricao TEXT PRIMARY KEY(idCategoria)
+    descricao TEXT,
+    PRIMARY KEY(idCategoria)
 );
 
 CREATE TABLE IF NOT EXISTS tb_pedidos(
