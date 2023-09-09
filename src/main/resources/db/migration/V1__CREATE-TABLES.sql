@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS tb_clientes(
     nome VARCHAR(50) NOT NULL,
     sobrenome VARCHAR(255) NOT NULL,
     dataNascimento DATE,
+    idUsuario BIGINT NOT NULL,
     PRIMARY KEY(idCliente),
     FOREIGN KEY(idUsuario) REFERENCES tb_usuarios(idUsuario)
 );
@@ -21,6 +22,7 @@ CREATE TABLE IF NOT EXISTS tb_fornecedores(
     nomeFantasia VARCHAR(255) NOT NULL,
     razaoSocial VARCHAR(255) NOT NULL,
     cnpj VARCHAR(18) NOT NULL,
+    idUsuario BIGINT NOT NULL,
     PRIMARY KEY(idFornecedor),
     FOREIGN KEY (idUsuario) REFERENCES tb_usuarios(idUsuario)
 );
@@ -28,7 +30,7 @@ CREATE TABLE IF NOT EXISTS tb_fornecedores(
 CREATE TABLE IF NOT EXISTS tb_categorias (
     idCategoria BIGINT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(50),
-    descricao TEXT
+    descricao TEXT PRIMARY KEY(idCategoria)
 );
 
 CREATE TABLE IF NOT EXISTS tb_pedidos(
@@ -43,6 +45,8 @@ CREATE TABLE IF NOT EXISTS tb_produtos(
     nome VARCHAR(255) NOT NULL,
     preco DOUBLE NOT NULL,
     descricao TEXT,
+    idFornecedor BIGINT NOT NULL,
+    idCategoria BIGINT NOT NULL,
     PRIMARY KEY(idProduto),
     FOREIGN KEY(idFornecedor) REFERENCES tb_fornecedores(idFornecedor),
     FOREIGN KEY(idCategoria) REFERENCES tb_categorias(idCategoria)
@@ -51,6 +55,8 @@ CREATE TABLE IF NOT EXISTS tb_produtos(
 CREATE TABLE IF NOT EXISTS tb_itens_pedido(
     idItem BIGINT NOT NULL AUTO_INCREMENT,
     quantidade INT NOT NULL,
+    idPedido BIGINT NOT NULL,
+    idProduto BIGINT NOT NULL,
     PRIMARY KEY(idItem),
     FOREIGN KEY(idPedido) REFERENCES tb_pedidos(idPedido),
     FOREIGN KEY(idProduto) REFERENCES tb_produtos(idProduto)
@@ -60,9 +66,11 @@ CREATE TABLE IF NOT EXISTS tb_avaliacoes_produto (
     idAvaliacaoProduto BIGINT NOT NULL AUTO_INCREMENT,
     pontuacao INT(2) NULL,
     comentario VARCHAR(255) NULL,
-    idCliente BIGINT NULL,
-    idProduto BIGINT NULL,
+    idCliente BIGINT NOT NULL,
+    idProduto BIGINT NOT NULL,
     PRIMARY KEY (idAvaliacaoProduto),
     FOREIGN KEY (idCliente) REFERENCES tb_clientes(idCliente),
     FOREIGN KEY (idProduto) REFERENCES tb_produtos(idProduto)
 );
+
+-- CRIAR tb_produtos_tb_categorias
