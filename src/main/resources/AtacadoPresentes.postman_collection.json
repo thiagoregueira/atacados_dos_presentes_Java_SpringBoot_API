@@ -14,6 +14,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"\",\r\n    \"preco\": \"\",\r\n    \"descricao\": \"\",\r\n    \"fornecedor\":{\r\n    \"idFornecedor\":\r\n    },\r\n    \"categoria\":[]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/produtos",
 							"protocol": "http",
@@ -72,6 +81,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"\",\r\n    \"preco\": \"\",\r\n    \"descricao\": \"\",\r\n    \"fornecedor\": {\r\n        \"idFornecedor\":\r\n    },\r\n    \"categoria\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/produtos",
 							"protocol": "http",
@@ -124,6 +142,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"senha\": \"\",\r\n    \"perfil\": \"\",\r\n    \"telefone\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/usuarios",
 							"protocol": "http",
@@ -182,6 +209,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"senha\": \"\",\r\n    \"perfil\": \"\",\r\n    \"telefone\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/usuarios/1",
 							"protocol": "http",
@@ -226,6 +262,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": \"dd/MM/yyyy\",\r\n    \"status\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/pedidos",
 							"protocol": "http",
@@ -284,6 +329,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": \"dd/MM/yyyy\",\r\n    \"status\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/pedidos",
 							"protocol": "http",
@@ -327,6 +381,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantidade\":  ,\r\n    \"pedido\":{\r\n        \"idPedido\":\r\n    },\r\n    \"produto\":{\r\n        \"idProduto\":\r\n    }\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/itens-pedido",
 							"protocol": "http",
@@ -385,6 +448,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantidade\":  ,\r\n    \"pedido\":{\r\n        \"idPedido\":\r\n    },\r\n    \"produto\":{\r\n        \"idProduto\":\r\n    }\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/itens-pedido",
 							"protocol": "http",
@@ -429,6 +501,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeFantasia\": \"\",\r\n    \"razaoSocial\": \"\",\r\n    \"cnpj\": \"00.000.000/0001-00\",\r\n    \"endereco\": {\r\n        \"cep\": \"00.000-000\",\r\n        \"logradouro\": \"\",\r\n        \"numero\": \"\",\r\n        \"complemento\": \"\",\r\n        \"bairro\": \"\",\r\n        \"cidade\": \"\",\r\n        \"uf\": \"\",\r\n        \"pontoDeReferencia\": \"\"\r\n    },\r\n    \"usuario\": {\r\n        \"idUsuario\":\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/fornecedores",
 							"protocol": "http",
@@ -448,6 +529,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeFantasia\": \"\",\r\n    \"razaoSocial\": \"\",\r\n    \"cnpj\": \"00.000.000/0001-00\",\r\n    \"endereco\": {\r\n        \"cep\": \"00.000-000\",\r\n        \"logradouro\": \"\",\r\n        \"numero\": \"\",\r\n        \"complemento\": \"\",\r\n        \"bairro\": \"\",\r\n        \"cidade\": \"\",\r\n        \"uf\": \"\",\r\n        \"pontoDeReferencia\": \"\"\r\n    },\r\n    \"usuario\": {\r\n        \"idUsuario\":\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/fornecedores",
 							"protocol": "http",
@@ -533,7 +623,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"João\",\r\n    \"sobrenome\": \"Silva\",\r\n    \"dataNascimento\": \"01/01/1990\",\r\n    \"endereco\": {\r\n        \"cep\": \"12.345-678\",\r\n        \"logradouro\": \"Rua Exemplo\",\r\n        \"numero\": \"456\",\r\n        \"complemento\": \"Apto 789\",\r\n        \"bairro\": \"Centro\",\r\n        \"cidade\": \"São Paulo\",\r\n        \"uf\": \"SP\",\r\n        \"pontoDeReferencia\": \"Próximo ao parque\"\r\n    },\r\n    \"usuario\": {\r\n        \"email\": \"joao.silva@example.com\",\r\n        \"senha\": \"senha123\",\r\n        \"perfil\": \"CLIENTE\",\r\n        \"telefone\": \"123456789\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"nome\": \"\",\r\n    \"sobrenome\": \"\",\r\n    \"dataNascimento\": \"01/01/1990\",\r\n    \"endereco\": {\r\n        \"cep\": \"12.345-678\",\r\n        \"logradouro\": \"\",\r\n        \"numero\": \"\",\r\n        \"complemento\": \"\",\r\n        \"bairro\": \"\",\r\n        \"cidade\": \"\",\r\n        \"uf\": \"\",\r\n        \"pontoDeReferencia\": \"\"\r\n    },\r\n    \"usuario\": {\r\n        \"idUsuario\":\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -600,7 +690,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"João\",\r\n    \"sobrenome\": \"Silvinho\",\r\n    \"dataNascimento\": \"01/01/1990\",\r\n    \"endereco\": {\r\n        \"cep\": \"12.345-678\",\r\n        \"logradouro\": \"Rua Exemplo\",\r\n        \"numero\": \"456\",\r\n        \"complemento\": \"Apto 789\",\r\n        \"bairro\": \"Centro\",\r\n        \"cidade\": \"São Paulo\",\r\n        \"uf\": \"SP\",\r\n        \"pontoDeReferencia\": \"Dentro D'agua\"\r\n    },\r\n    \"usuario\": {\r\n        \"email\": \"joao.silva@example.com\",\r\n        \"senha\": \"senha123\",\r\n        \"perfil\": \"CLIENTE\",\r\n        \"telefone\": \"123456789\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"nome\": \"\",\r\n    \"sobrenome\": \"\",\r\n    \"dataNascimento\": \"01/01/1990\",\r\n    \"endereco\": {\r\n        \"cep\": \"12.345-678\",\r\n        \"logradouro\": \"\",\r\n        \"numero\": \"\",\r\n        \"complemento\": \"\",\r\n        \"bairro\": \"\",\r\n        \"cidade\": \"\",\r\n        \"uf\": \"\",\r\n        \"pontoDeReferencia\": \"\"\r\n    },\r\n    \"usuario\": {\r\n        \"idUsuario\":\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -652,6 +742,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"\",\r\n    \"descricao\": \"\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/categorias",
 							"protocol": "http",
@@ -710,6 +809,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"\",\r\n    \"descricao\": \"\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/categorias",
 							"protocol": "http",
@@ -753,6 +861,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pontuacao\": ,\r\n    \"comentario\": \"\",\r\n    \"cliente\": {\r\n        \"idCliente\": \r\n    },\r\n    \"produto\": {\r\n        \"idProduto\": \r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/avaliacoes-produto",
 							"protocol": "http",
@@ -810,6 +927,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pontuacao\": ,\r\n    \"comentario\": \"\",\r\n    \"cliente\": {\r\n        \"idCliente\": \r\n    },\r\n    \"produto\": {\r\n        \"idProduto\": \r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/avaliacoes-produto",
 							"protocol": "http",
