@@ -33,7 +33,7 @@ public class ClienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cliente> listarClientePeloId(@PathVariable("id") Long id) {
+    public ResponseEntity<Cliente> listarClientePeloId(@PathVariable Long id) {
         Optional<Cliente> cliente = clienteRepository.findById(id);
 
         if (cliente.isEmpty()) {
@@ -51,7 +51,7 @@ public class ClienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> atualizarCliente(@PathVariable("id") Long id, @RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> atualizarCliente(@PathVariable Long id, @RequestBody Cliente cliente) {
         Optional<Cliente> clienteExistente = clienteRepository.findById(id);
 
         if (clienteExistente.isPresent()) {

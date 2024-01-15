@@ -44,7 +44,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Produto>> listarProdutosPorId(@PathVariable("id") Long id) {
+    public ResponseEntity<Optional<Produto>> listarProdutosPorId(@PathVariable Long id) {
 
         Optional<Produto> produto = produtosRepository.findById(id);
 
@@ -56,7 +56,7 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Produto> atualizarProduto(@PathVariable("id") Long id, @RequestBody Produto produtos) {
+    public ResponseEntity<Produto> atualizarProduto(@PathVariable Long id, @RequestBody Produto produtos) {
 
         Optional<Produto> produtoExistente = produtosRepository.findById(id);
 
@@ -75,7 +75,7 @@ public class ProdutoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletarProduto(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deletarProduto(@PathVariable Long id) {
 
         Optional<Produto> produto = produtosRepository.findById(id);
 
@@ -90,7 +90,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/categorias/{idCategoria}")
-    public ResponseEntity<List<Produto>> produtosPorCategoria(@PathVariable("idCategoria") Long idCategoria){
+    public ResponseEntity<List<Produto>> produtosPorCategoria(@PathVariable Long idCategoria){
 
         List<Produto> produtos = produtosRepository.findByProdutosPorCategorias(idCategoria);
 

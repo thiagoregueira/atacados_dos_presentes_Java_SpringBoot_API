@@ -54,7 +54,7 @@ public class ItemPedidoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletarItemPeloId(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deletarItemPeloId(@PathVariable Long id) {
 
         Optional<ItemPedido> itensDoPedido = itensDoPedidoRepository.findById(id);
         if (itensDoPedido.isEmpty()) {

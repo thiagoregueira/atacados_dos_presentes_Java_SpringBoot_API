@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,10 +23,13 @@ import com.atacado.presentes.api.repository.AvaliacaoProdutoRepository;
 @RequestMapping(value = "/avaliacoes-produto")
 public class AvaliacaoProdutoController {
 
-    @PostMapping
-    public ResponseEntity<AvaliacaoProduto> cadastrarNovaAvaliacao(@RequestBody AvaliacaoProduto avaliacaoProduto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(avaliacaoProdutoRepository.save(avaliacaoProduto));
-    }
+@PostMapping
+public ResponseEntity<AvaliacaoProduto> cadastrarNovaAvaliacao(@NonNull @RequestBody AvaliacaoProduto avaliacaoProduto) {
+    AvaliacaoProduto novaAvaliacao = avaliacaoProdutoRepository.save(avaliacaoProduto);
+    return ResponseEntity
+            .status(HttpStatus.CREATED)
+            .body(novaAvaliacao);
+}
 
    
     @GetMapping("/produto/{id}")
@@ -40,7 +44,7 @@ public class AvaliacaoProdutoController {
     }
 
 @GetMapping("/{id}")
-public ResponseEntity<AvaliacaoProduto> buscarAvaliacaoPeloId(@PathVariable("id") Long id) {
+public ResponseEntity<AvaliacaoProduto> buscarAvaliacaoPeloId(@NonNull @PathVariable Long id) {
     Optional<AvaliacaoProduto> avaliacaoProduto = avaliacaoProdutoRepository.findById(id);
 
     if (avaliacaoProduto.isEmpty()) {
@@ -50,27 +54,27 @@ public ResponseEntity<AvaliacaoProduto> buscarAvaliacaoPeloId(@PathVariable("id"
     return ResponseEntity.status(HttpStatus.OK).body(avaliacaoProduto.get());
 }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<AvaliacaoProduto> atualizarAvaliacaoProduto(
-            @PathVariable("id") Long id,
-            @RequestBody AvaliacaoProduto avaliacaoProduto) {
-        Optional<AvaliacaoProduto> avaliacaoProdutoExistente = avaliacaoProdutoRepository.findById(id);
+@PutMapping("/{id}")
+public ResponseEntity<AvaliacaoProduto> atualizarAvaliacaoProduto(
+        @NonNull @PathVariable Long id, @NonNull
+        @RequestBody AvaliacaoProduto avaliacaoProduto) {
+    Optional<AvaliacaoProduto> avaliacaoProdutoExistente = avaliacaoProdutoRepository.findById(id);
 
-        if (avaliacaoProdutoExistente.isPresent()) {
-            avaliacaoProdutoExistente.get().setPontuacao(avaliacaoProduto.getPontuacao());
-            avaliacaoProdutoExistente.get().setComentario(avaliacaoProduto.getComentario());
-            avaliacaoProdutoExistente.get().setCliente(avaliacaoProduto.getCliente());
-            avaliacaoProdutoExistente.get().setProduto(avaliacaoProduto.getProduto());
+    if (avaliacaoProdutoExistente.isPresent()) {
+        avaliacaoProdutoExistente.get().setPontuacao(avaliacaoProduto.getPontuacao());
+        avaliacaoProdutoExistente.get().setComentario(avaliacaoProduto.getComentario());
+        avaliacaoProdutoExistente.get().setCliente(avaliacaoProduto.getCliente());
+        avaliacaoProdutoExistente.get().setProduto(avaliacaoProduto.getProduto());
 
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body(avaliacaoProdutoRepository.save(avaliacaoProdutoExistente.get()));
-        }
-
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(avaliacaoProdutoRepository.save(avaliacaoProdutoExistente.get()));
     }
 
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+}
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletarAvaliacaoPeloId(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deletarAvaliacaoPeloId(@PathVariable Long id) {
         Optional<AvaliacaoProduto> avaliacaoProduto = avaliacaoProdutoRepository.findById(id);
         if (avaliacaoProduto.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

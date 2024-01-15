@@ -35,7 +35,7 @@ public class PedidoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pedido> buscarPedidoPeloId(@PathVariable("id") Long id) {
+    public ResponseEntity<Pedido> buscarPedidoPeloId(@PathVariable Long id) {
         Optional<Pedido> pedido = pedidoRepository.findById(id);
 
         if (pedido.isEmpty()) {
@@ -46,7 +46,7 @@ public class PedidoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Pedido> atualizarPedido(@PathVariable("id") Long id, @RequestBody Pedido pedido) {
+    public ResponseEntity<Pedido> atualizarPedido(@PathVariable Long id, @RequestBody Pedido pedido) {
         Optional<Pedido> pedidoCadastrado = pedidoRepository.findById(id);
 
         if (pedidoCadastrado.isPresent()) {
@@ -62,7 +62,7 @@ public class PedidoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletarPedidoPeloId(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deletarPedidoPeloId(@PathVariable Long id) {
         Optional<Pedido> pedidoCadastrado = pedidoRepository.findById(id);
 
         if (pedidoCadastrado.isEmpty()) {

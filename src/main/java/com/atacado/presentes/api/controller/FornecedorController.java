@@ -36,7 +36,7 @@ public class FornecedorController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Fornecedor> buscarFornecedorPeloId(@PathVariable("id") Long id) {
+    public ResponseEntity<Fornecedor> buscarFornecedorPeloId(@PathVariable Long id) {
         Optional<Fornecedor> fornecedor = fornecedorRepository.findById(id);
         if (fornecedor.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -46,7 +46,7 @@ public class FornecedorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Fornecedor> atualizarFornecedor(@PathVariable("id") Long id,
+    public ResponseEntity<Fornecedor> atualizarFornecedor(@PathVariable Long id,
             @RequestBody Fornecedor fornecedor) {
         Optional<Fornecedor> fornecedorExistente = fornecedorRepository.findById(id);
 
@@ -63,7 +63,7 @@ public class FornecedorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletarFornecedorPeloId(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deletarFornecedorPeloId(@PathVariable Long id) {
         Optional<Fornecedor> fornecedor = fornecedorRepository.findById(id);
 
         if (fornecedor.isEmpty()) {

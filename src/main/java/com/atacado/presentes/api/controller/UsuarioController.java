@@ -38,7 +38,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> listarPeloId(@PathVariable("id") Long id) {
+    public ResponseEntity<Usuario> listarPeloId(@PathVariable Long id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
 
         if (usuario.isEmpty()) {
@@ -49,7 +49,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizarUsuario(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
+    public ResponseEntity<?> atualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
         Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
 
         if (usuarioExistente.isPresent()) {
